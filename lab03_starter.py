@@ -5,18 +5,56 @@ import random
 numLives = 10           # number of player's lives remaining
 mNumLives = 12          # number of monster's lives remaining
 
-diceOptions = [1, 2, 3, 4, 5, 6]
-combatStrength = int(input("Enter your combat Strength: (Number between 1-6) "))
+# TODO: use list() and range() to create a list of dice values insted of current hard coded
 
+diceOptions = [1,2,3,4,5,6]
+diceValues = list(range(1,7))
+print(diceOptions)
+
+#diceOptions = range(1, 4)
+#diceList = list(diceRange)
+#for d in diceRange:
+#print(d)
+#print(diceRange)
+#print(diceList)
+
+# TODO: question 2
+weapons = ["Fist", "Knife", "Club", "Gun", "Bomb", "Nuclear bomb"]
+print("Available weapons:")
+
+i=1
+for w in weapons:
+    print(f"{i}. {w}")
+    i+=1
+
+# TODO: question3
+#combatStrength = int(input("Enter your combat strength: (number betnwee 1-6) "))
+j=0
+while j<5:
+    print("hello")
+    j += 1
+
+
+combatStrength = input("Enter your combat strength: (number between 1-6) ")
+isValid = combatStrength.isnumeric() and int(combatStrength) >= 1 and int(combatStrength) <= 6
+
+while not isValid:
+    print("Input must be number 1-6")
+ combatStrength = input("Enter your combat strength: (number between 1-6) ")
+ isValid = combatStrength.isnumeric() and int(combatStrength) >= 1 and int(combatStrength) <= 6
+
+ combatStrength = int(combatStrength)
+
+#isValid = combatStrength >= 1 and combatStrength <= 6
+#while not isValid:
+#   print("Input must be integer 1-6")
+#  combatStrength = input("Enter your combat strength: (number between 1-6) ")
+
+mCombatStrength = int(input("Enter monster's combat strength "))
 if(combatStrength < 1 or combatStrength > 6):
     print("Input must be an integer between 1-6")
-else:
-    mCombatStrength = int(input("Enter the monster's combat Strength: "))
-    if(mCombatStrength  < 1 or mCombatStrength > 6):
-        print("Input must be an integer between 1-6")
-    else:
-        weapons = ["Fist", "Knife", "Club", "Gun", "Bomb", "Nuclear bomb"] 
 
+    else:
         input("Roll the dice for your health points (Press enter)")
         healthPoints = random.choice(diceOptions)
         print("You rolled " + str(healthPoints) + " health points")
